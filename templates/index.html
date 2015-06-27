@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block body %}
+
+<table class="table table-bordered table-condensed table-hover ">
+   <button type="button" class="btn btn-danger btn-lg">
+      掌阅REDIS信息汇总中心	 
+   </button>
+   <thead>
+      <tr>
+         <th>IP地址</th>
+        <!-- <th>CPU</th>
+         <th>Stats</th>
+         <th>Server</th>-->
+         <th>Memory</th>
+         <th>Clients</th>
+         <th>Keyspace</th>
+         <th>Persistence</th>
+         <th>Replication</th>
+      </tr>
+   </thead>
+   <tbody>
+     {% for addr in data %}
+      <tr>
+         <td>{{ addr }}</td>
+	 {% set Redis=data[addr]%}
+	 <!--<td>{% for x in Redis["CPU"] %} {{x}}:{{(Redis["CPU"])[x]}}   {% end %}</td>
+	 <td>{% for x in Redis["Stats"] %} {{x}}:{{(Redis["Stats"])[x]}}   {% end %}</td>
+	 <td>{% for x in Redis["Server"] %} {{x}}:{{(Redis["Server"])[x]}}</br>   {% end %}</td>
+	 -->
+	 <td>{% for x in Redis["Memory"] %} {{x}}:{{(Redis["Memory"])[x]}}   {% end %}</td>
+	 <td>{% for x in Redis["Clients"] %} {{x}}:{{(Redis["Clients"])[x]}}   {% end %}</td>
+	 {% set name=Redis["Keyspace"]%}
+	 <td> {% for x in name %} 
+		{% for m in (name)[x] %}
+			{{x}}:{{m}}:{{((name)[x])[m]}}
+		{% end %}
+    	      {% end %}
+	 </td>
+	 <td>{% for x in Redis["Persistence"] %} {{x}}:{{(Redis["Persistence"])[x]}}   {% end %}</td>
+	 <td>{% for x in Redis["Replication"] %} {{x}}:{{(Redis["Replication"])[x]}}   {% end %}</td>
+      </tr>
+     {% end %}
+   </tbody>
+</table>
+{% end %}
