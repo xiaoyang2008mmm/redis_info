@@ -1,1 +1,2 @@
 # redis_info
+第一版本查看IDC机房内所有的REDIS实例的info信息，便于更直观统计和分析
