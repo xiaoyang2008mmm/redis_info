@@ -1,4 +1,3 @@
-#!/usr/bin/python_old
 # -*- coding: utf-8 -*- 
 import tornado.httpserver, os
 import tornado.ioloop
@@ -7,7 +6,7 @@ from handlers.handlers import HANDLERS , STATIC_PATH , TEMPLATE_PATH
 
 from tornado.options import define, options, parse_command_line
 
-define("port", default=82, help="run on the given port", type=int)
+define("port", default=80, help="run on the given port", type=int)
 
 
 class Application(tornado.web.Application):

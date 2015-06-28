@@ -1,4 +1,3 @@
-#!/usr/bin/python_old
 import redis
 class Get_Redis_info:
     def __init__(self, addr, port):

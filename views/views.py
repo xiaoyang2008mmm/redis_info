@@ -1,4 +1,3 @@
-#!/usr/bin/python_old
 # -*- coding: utf-8 -*- 
 
 import tornado.web
@@ -14,12 +13,17 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class IndexHandler(BaseHandler):
     def get(self):
-	redis_dict={"192.168.7.149":[6329,6339,6349,6359,6369,6319,6439,6409,6419,6429,6309]}
+	redis_dict={"192.168.1.106":[6429,6439]}
 	data = {}
 	for key in redis_dict:
 	    for port in redis_dict[key]:
 	    	R_INFO = Get_Redis_info(str(key),port)
 	    	data["%s:%s"%(key,port)] = R_INFO.info()
         self.render('index.html', data = data) 
+       
+
+class ChartHandler(BaseHandler):
+    def get(self):
+        self.render('chart.html') 
        
 
