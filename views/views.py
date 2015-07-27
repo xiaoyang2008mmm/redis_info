@@ -27,3 +27,6 @@ class ChartHandler(BaseHandler):
         self.render('chart.html') 
        
 
+class Log_displayHandler(BaseHandler):
+    def get(self):
+        self.render('log_display.html') 
